@@ -34,7 +34,7 @@ class RonnNg < Formula
     end
 
     system "gem", "build", "ronn-ng.gemspec"
-    system "gem", "install", "--ignore-dependencies", "ronn-ng-#{version}.gem"
+    system "gem", "install", "--ignore-dependencies", "ronn-ng-0.8.0.gem"
 
     bin.install libexec/"bin/ronn"
     bin.env_script_all_files(libexec/"bin", :GEM_HOME => ENV["GEM_HOME"])
@@ -46,6 +46,13 @@ class RonnNg < Formula
   end
 
   test do
-    system bin/"ronn", "--version"
+    (testpath/"test.ronn").write <<~EOS
+    helloworld
+    ==========
+
+    Hello, world!
+    EOS
+
+    assert_match /^Hello, world/, shell_output("#{bin}/ronn --roff --pipe test.ronn")
   end
 end
