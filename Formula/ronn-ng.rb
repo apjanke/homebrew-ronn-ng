@@ -1,8 +1,8 @@
 class RonnNg < Formula
   desc "Build man pages from Markdown"
   homepage "https://github.com/apjanke/ronn-ng"
-  url "https://github.com/apjanke/ronn-ng/archive/0.8.0.tar.gz"
-  sha256 "6446c5543e48963ed8f9911816014ed5588a5f42d771dd2fca5b2ddd00a40f21"
+  url "https://github.com/apjanke/ronn-ng/archive/v0.8.0.tar.gz"
+  sha256 "c3f064fca2e8e9f8636cc3a43481851fd4a16bcf0a7d9f93761e6a49f663b03b"
   head "https://github.com/apjanke/ronn-ng.git"
 
   # Nokogiri 1.9 requires a newer Ruby
