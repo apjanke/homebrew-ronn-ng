@@ -33,8 +33,14 @@ class RonnNg < Formula
              "--install-dir", libexec)
     end
 
+    if build.head?
+      gem_file = "ronn-ng-#{version}.gem"
+    else
+      d = Dir['ronn-ng-*.gem']
+      gem_file = d[0]
+    end
     system "gem", "build", "ronn-ng.gemspec"
-    system "gem", "install", "--ignore-dependencies", "ronn-ng-0.8.0.gem"
+    system "gem", "install", "--ignore-dependencies", gem_file
 
     bin.install libexec/"bin/ronn"
     bin.env_script_all_files(libexec/"bin", :GEM_HOME => ENV["GEM_HOME"])
