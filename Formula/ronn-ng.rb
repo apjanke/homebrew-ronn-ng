@@ -39,10 +39,10 @@ class RonnNg < Formula
     end
 
     if build.head?
-      gem_file = "ronn-ng-#{version}.gem"
-    else
       d = Dir['ronn-ng-*.gem']
       gem_file = d[0]
+    else
+      gem_file = "ronn-ng-#{version}.gem"
     end
     system "gem", "build", "ronn-ng.gemspec"
     system "gem", "install", "--ignore-dependencies", gem_file
