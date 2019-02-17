@@ -5,6 +5,11 @@ class RonnNg < Formula
   sha256 "c3f064fca2e8e9f8636cc3a43481851fd4a16bcf0a7d9f93761e6a49f663b03b"
   head "https://github.com/apjanke/ronn-ng.git"
 
+  devel do
+    url "https://github.com/apjanke/ronn-ng/archive/v0.8.1.beta.1.tar.gz"
+    sha256 "9a8aea7e78d86ece5c015305381dd99c343036d37adf4c5d3729b981817d2f05"
+  end
+
   # Nokogiri 1.9 requires a newer Ruby
   depends_on "ruby"
 
