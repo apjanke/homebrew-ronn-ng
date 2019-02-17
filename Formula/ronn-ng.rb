@@ -18,6 +18,11 @@ class RonnNg < Formula
     sha256 "d9a6188661ada14629ab33b168d41e3311adcd2005ea02d155c27f68779a4d80"
   end
 
+  resource "mini_portile2" do
+    url "https://rubygems.org/gems/mini_portile2-2.4.0.gem"
+    sha256 "7e178a397ad62bb8a96977986130dc81f1b13201c6dd95a48bd8cec1dda5f797"
+  end
+
   resource "nokogiri" do
     url "https://rubygems.org/gems/nokogiri-1.9.0.gem"
     sha256 "e0dc98da58f955789c6fe6273c9eebf93568b38e93feafa7356cb79a71b4b62d"
@@ -39,10 +44,10 @@ class RonnNg < Formula
     end
 
     if build.head?
-      gem_file = "ronn-ng-#{version}.gem"
-    else
       d = Dir['ronn-ng-*.gem']
       gem_file = d[0]
+    else
+      gem_file = "ronn-ng-#{version}.gem"
     end
     system "gem", "build", "ronn-ng.gemspec"
     system "gem", "install", "--ignore-dependencies", gem_file
