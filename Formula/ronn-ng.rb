@@ -1,21 +1,16 @@
 class RonnNg < Formula
   desc "Build man pages from Markdown"
   homepage "https://github.com/apjanke/ronn-ng"
-  url "https://github.com/apjanke/ronn-ng/archive/v0.8.0.tar.gz"
-  sha256 "c3f064fca2e8e9f8636cc3a43481851fd4a16bcf0a7d9f93761e6a49f663b03b"
+  url "https://github.com/apjanke/ronn-ng/archive/v0.9.1.tar.gz"
+  sha256 "48dc2e82e34ada6299695914bb9d4a1ba9ed8e7f58c91c7371b0d9650a3dca88"
   head "https://github.com/apjanke/ronn-ng.git"
-
-  devel do
-    url "https://github.com/apjanke/ronn-ng/archive/v0.8.1.beta.1.tar.gz"
-    sha256 "9a8aea7e78d86ece5c015305381dd99c343036d37adf4c5d3729b981817d2f05"
-  end
 
   # Nokogiri 1.9 requires a newer Ruby
   depends_on "ruby"
 
   resource "mustache" do
-    url "https://rubygems.org/gems/mustache-0.7.0.gem"
-    sha256 "d9a6188661ada14629ab33b168d41e3311adcd2005ea02d155c27f68779a4d80"
+    url "https://rubygems.org/gems/mustache-1.0.0.gem"
+    sha256 "a48a8cce4bf8ba33c6b6228f883099bc44cc5c6bb456137f36f075a72a31c645"
   end
 
   resource "mini_portile2" do
@@ -28,9 +23,9 @@ class RonnNg < Formula
     sha256 "e0dc98da58f955789c6fe6273c9eebf93568b38e93feafa7356cb79a71b4b62d"
   end
 
-  resource "rdiscount" do
-    url "https://rubygems.org/gems/rdiscount-2.0.7.gem"
-    sha256 "417fa105b9c282b430a60f7c450e8cb50bd3a28d36b4fd377d4ae29e8a6d49b2"
+  resource "kramdown" do
+    url "https://rubygems.org/gems/kramdown-2.1.0.gem"
+    sha256 "089956b32ef77cf85136553b392635d9e2b8b6c7bd8e470db6a9a1be172088b6"
   end
 
   def install
