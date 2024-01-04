@@ -1,37 +1,40 @@
-class RonnNg < Formula
-  desc "Build man pages from Markdown"
+class RonnNgPrerelease < Formula
+  desc "Build man pages from Markdown (prerelease version)"
   homepage "https://github.com/apjanke/ronn-ng"
-  url "https://github.com/apjanke/ronn-ng/archive/v0.9.1.tar.gz"
-  sha256 "48dc2e82e34ada6299695914bb9d4a1ba9ed8e7f58c91c7371b0d9650a3dca88"
-  head "https://github.com/apjanke/ronn-ng.git"
+  url "https://github.com/apjanke/ronn-ng/archive/refs/tags/v0.10.1.pre4.tar.gz"
+  sha256 "0ebde28f469fee5e2a5b2ebdb915aea46052e2495581d8b4754071bbcad0bb99"
 
   conflicts_with "ronn", because: "provides the same command"
-  conflicts_with "ronn-ng-prerelease", because: "that's a prerelease version of same thing"
+  conflicts_with "ronn-ng", because: "prerelease version of same thing"
 
-  # Nokogiri 1.9 requires a newer Ruby
+  # Needs Ruby >= 2.7; macOS system Ruby is 2.6 as of macOS 14
   depends_on "ruby"
 
-  resource "kramdown" do
-    url "https://rubygems.org/gems/kramdown-2.1.0.gem"
-    sha256 "089956b32ef77cf85136553b392635d9e2b8b6c7bd8e470db6a9a1be172088b6"
+  resource "mustache" do
+    url "https://rubygems.org/gems/mustache-1.1.1.gem"
+    sha256 "90891fdd50b53919ca334c8c1031eada1215e78d226d5795e523d6123a2717d0"
   end
 
   # Required by nokogiri at build time
   resource "mini_portile2" do
-    url "https://rubygems.org/gems/mini_portile2-2.4.0.gem"
-    sha256 "7e178a397ad62bb8a96977986130dc81f1b13201c6dd95a48bd8cec1dda5f797"
+    url "https://rubygems.org/gems/mini_portile2-2.8.2.gem"
+    sha256 "46b2d244cc6ff01a89bf61274690c09fdbdca47a84ae9eac39039e81231aee7c"
   end
 
   resource "nokogiri" do
-    url "https://rubygems.org/gems/nokogiri-1.9.0.gem"
-    sha256 "e0dc98da58f955789c6fe6273c9eebf93568b38e93feafa7356cb79a71b4b62d"
+    url "https://rubygems.org/gems/nokogiri-1.16.0.gem"
+    sha256 "341388184e975d091e6e38ce3f3b3388bfb7e4ac3d790efd8e39124844040bd1"
   end
 
-  resource "mustache" do
-    url "https://rubygems.org/gems/mustache-1.0.0.gem"
-    sha256 "a48a8cce4bf8ba33c6b6228f883099bc44cc5c6bb456137f36f075a72a31c645"
+  resource "kramdown" do
+    url "https://rubygems.org/gems/kramdown-2.4.0.gem"
+    sha256 "b62e5bcbd6ea20c7a6730ebbb2a107237856e14f29cebf5b10c876cc1a2481c5"
   end
 
+  resource "kramdown-parser-gfm" do
+    url "https://rubygems.org/gems/kramdown-parser-gfm-1.1.0.gem"
+    sha256 "fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729"
+  end
 
   def install
     ENV["GEM_HOME"] = libexec
